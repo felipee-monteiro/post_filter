@@ -48,10 +48,25 @@ const insertPostsIntoPageAndFilterValues = async () => {
 
 			postTitleArrayFiltered.forEach(el => getElementAndRenderIntoPage(el,isNotEmpty));
 
+<<<<<<< HEAD
 		}, 1000);
 	}
 
 	postFilterInput.addEventListener("input", e => handleValueInput(e));
+=======
+	postFilterInput.addEventListener("input", e => {
+	    setTimeout(	() => {
+                let text =  e.target.value;
+		const titleTemplate = getElementsToBeRemoved().includes(text);
+
+		const elementsToBeRemoved = getElementsToBeRemoved(text);
+		elementsToBeRemoved.forEach(el => { 
+			removeOrAddElementFromPage(el, "d-none", "add");    
+		    if(!titleTemplate) removeOrAddElementFromPage(el, "d-none", "remove");
+		});
+            }, 1000);
+	});
+>>>>>>> f2b9b7b93e3523517ed18a67ffdad5067ce1baa8
 }
 
 insertPostsIntoPageAndFilterValues();
