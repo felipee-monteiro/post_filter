@@ -2,10 +2,14 @@ const postsContainer = document.querySelector("#posts-container");
 const postFilterInput = document.querySelector("#post-filter");
 
 const getAllFakePosts = async () => {
-	const res = await fetch("https://jsonplaceholder.typicode.com/posts?userId=1");
-	const data = await res.json();
-
-	return data;
+	try {
+		const res = await fetch("https://jsonplaceholder.typicode.com/posts?userId=1");
+		const data = await res.json();
+		return data;
+	}catch(e){
+		postsContainer.innerHTML = '<div class="alert alert-danger" role="alert">Erro de Conexão.</div>';
+		console.error(e);
+	}
 }
 
 const getElementsToBeRemoved = text => {
@@ -54,16 +58,16 @@ const insertPostsIntoPageAndFilterValues = async () => {
 	postFilterInput.addEventListener("input", e => handleValueInput(e));
 
 	postFilterInput.addEventListener("input", e => {
-	    setTimeout(	() => {
-                let text =  e.target.value;
-		const titleTemplate = getElementsToBeRemoved().includes(text);
+		setTimeout(	() => {
+			let text =  e.target.value;
+			const titleTemplate = getElementsToBeRemoved().includes(text);
 
-		const elementsToBeRemoved = getElementsToBeRemoved(text);
-		elementsToBeRemoved.forEach(el => { 
-			removeOrAddElementFromPage(el, "d-none", "add");    
-		    if(!titleTemplate) removeOrAddElementFromPage(el, "d-none", "remove");
-		});
-            }, 1000);
+			const elementsToBeRemoved = getElementsToBeRemoved(text);
+			elementsToBeRemoved.forEach(el => { 
+				removeOrAddElementFromPage(el, "d-none", "add");    
+				if(!titleTemplate) removeOrAddElementFromPage(el, "d-none", "remove");
+			});
+		}, 1000);
 	});
 
 }
