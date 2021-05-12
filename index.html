@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shards-ui/3.0.0/css/shards.min.css" integrity="sha512-ATPNLwY6zsriAW9aWaVyzCz5bRunkyNF3m7Es87HrwwhcJ2LwGDHnkPJzNRUOZI4fUcg6kEoNqC/rAUfvRizRw==" crossorigin="anonymous" />
+	<title>Post Filter</title>
+</head>
+<body class="bg-light">
+	<div class="container-fluid d-flex flex-column mh-100 bg-dark">
+		<nav class="container navbar navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand text-white" href="#">Blog</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" id="post-filter" type="search" placeholder="Search" aria-label="Search">
+				</form>
+			</div>
+		</nav>	
+	</div>
+	<div class="container mt-4 text-center">
+		<h3>Latest Posts</h3>
+		<hr class="bg-dark" style="width: 5rem;" />
+	</div>
+	<div class="row container mx-auto">
+		<div class="col-sm-6 m-auto py-5" id="posts-container"></div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/shards-ui/3.0.0/js/shards.min.js" integrity="sha512-pY3v/NW9hYmsCbTOeU6NHkNbaTAAGXLTZ27i1MIqHVLwniv/0xt26F5vSKI3jr2bZBJP3k2jRvlilMCp3E1bKg==" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="./app.js"></script>
+</body>
+</html>
