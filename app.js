@@ -8,18 +8,13 @@ const getAllFakePosts = async () => {
 	return data;
 }
 
-const removeOrAddElementFromPage = (el, className = null, addOrRemove) => {
-	const dataEl = document.getElementById(el);
-	
-	addOrRemove === "add" ? dataEl.classList.add(className) : dataEl.classList.remove(className);
-}
-
 const getElementsToBeRemoved = text => {
 	const postsTitle = document.querySelectorAll(".card-title");
-	const postTitleArray = Array.from(postsTitle).map(post => post.textContent);
+	const postTitleArray = Array.from(postsTitle).map(({textContent}) => textContent);
 	const postTitleArrayFiltered = postTitleArray.filter(value => value !== text);
+	const isNotEmpty = postTitleArray.includes(text);
 
-	return postTitleArrayFiltered;
+	return {postTitleArrayFiltered, isNotEmpty};
 }
 
 const insertPostsIntoPageAndFilterValues = async () => {
@@ -36,20 +31,27 @@ const insertPostsIntoPageAndFilterValues = async () => {
 		</div>
 		</div>
 		`;
-	});
+	}).join("");
 
-	postsContainer.innerHTML = postsTemplate.join("");
+	postsContainer.innerHTML = postsTemplate;
 
-	postFilterInput.addEventListener("input", e => {
-		let text =  e.target.value;
-		const titleTemplate = getElementsToBeRemoved().includes(text);
+	const getElementAndRenderIntoPage = (el, isNotEmpty) => {  
+		const datael = document.getElementById(el);
+		datael.classList.add("d-none");
+		if(!isNotEmpty) datael.classList.remove("d-none"); 
+	}
 
-		const elementsToBeRemoved = getElementsToBeRemoved(text);
-		elementsToBeRemoved.forEach(el => { 
-			removeOrAddElementFromPage(el, "d-none", "add");    
-		    if(!titleTemplate) removeOrAddElementFromPage(el, "d-none", "remove");
-		});
-	});
+	const handleValueInput = e => {
+		setTimeout(() => {
+			const text = e.target.value;
+			const {postTitleArrayFiltered, isNotEmpty} = getElementsToBeRemoved(text);
+
+			postTitleArrayFiltered.forEach(el => getElementAndRenderIntoPage(el,isNotEmpty));
+
+		}, 1000);
+	}
+
+	postFilterInput.addEventListener("input", e => handleValueInput(e));
 }
 
 insertPostsIntoPageAndFilterValues();
