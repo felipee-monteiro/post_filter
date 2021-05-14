@@ -50,7 +50,7 @@ const insertPostsIntoPageAndFilterValues = async () => {
 			removeOrAddElementFromPage(el, "d-none", "add");    
 		    if(!titleTemplate) removeOrAddElementFromPage(el, "d-none", "remove");
 		});
-            }, 2000);
+            }, 1000);
 	});
 }
 
