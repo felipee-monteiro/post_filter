@@ -41,7 +41,8 @@ const insertPostsIntoPageAndFilterValues = async () => {
 	postsContainer.innerHTML = postsTemplate.join("");
 
 	postFilterInput.addEventListener("input", e => {
-		let text =  e.target.value;
+	    setTimeout(	() => {
+                let text =  e.target.value;
 		const titleTemplate = getElementsToBeRemoved().includes(text);
 
 		const elementsToBeRemoved = getElementsToBeRemoved(text);
@@ -49,6 +50,7 @@ const insertPostsIntoPageAndFilterValues = async () => {
 			removeOrAddElementFromPage(el, "d-none", "add");    
 		    if(!titleTemplate) removeOrAddElementFromPage(el, "d-none", "remove");
 		});
+            }, 2000);
 	});
 }
 
